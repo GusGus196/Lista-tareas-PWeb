@@ -18,7 +18,7 @@ class Inventario{
     }
 
     obtener(nombre){
-        this.porducto.get(nombre);
+        return this.porducto.get(nombre);
     }
 
     eliminar(nombre){
@@ -41,8 +41,15 @@ document.getElementById("btnAgregar").addEventListener("click", () => {
     const categoria =document.getElementById("categoria").value;
     const fecha =document.getElementById("date").value;
 
+    if(inventario.obtener(nombre)){
+        mostrarMensaje("El producto ya existe", "error");
+        return;
+    }
+
     const producto = new Producto(nombre, cantidad, precio, categoria, fecha);
     inventario.agregar(producto);
+
+    mostrarMensaje("Producto agregado correctamente", "exito");
 
 });
 
@@ -51,3 +58,13 @@ document.getElementById("btnBuscar").addEventListener("click", () =>{
     inventario.mostrar(nombre);
 })
 
+function mostrarMensaje(texto, tipo){
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.textContent = texto;
+    mensaje.className = "mensaje " + tipo + " mostrar";
+
+    setTimeout(() => {
+        mensaje.classList.remove("mostrar");
+    }, 3000);
+}

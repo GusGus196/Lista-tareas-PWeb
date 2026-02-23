@@ -1,0 +1,24 @@
+.mensaje{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.exito{
+    background-color: #28a745;
+}
+
+.error{
+    background-color: #dc3545;
+}
+
+.mostrar{
+    opacity: 1;
+}
+
