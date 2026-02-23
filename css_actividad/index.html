@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Original</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="08 - selectores.css">
+	<script src="modernizr-custom.js"></script>
+
+	<style>
+		#cambio-color {
+		background-color: white;
+		}
+
+		#cambio-color:hover{
+			background-color: rgb(135, 135, 135);
+		}
+
+		.box {
+			width: 200px;
+			height: 150px;
+			border: 4px solid rgb(0, 0, 0);
+		}
+
+		.border{
+			width: 3cm;
+			height: 8mm;
+			border: 1mm solid black;
+		}
+
+		.dotted{
+			width: 3cm;
+			height: 8mm;
+			border: 1mm dotted gray;
+		}
+
+		.azul{
+			color: green;
+		}
+
+		.grande{
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div>
+			<h2 title="main cabecera otro" class="grande">Titulo secundario en cabecera</h2>
+		</div>
+		
+	</header>
+	<h2 lang="es-MX">Titulo Secundario 2</h2>
+	<h2 title="otro">Titulo Secundario</h2>
+	<h2 lang="es-ES">Titulo Terciario</h2>
+
+
+	<p class="border">Texto de prueba</p>
+	<p class="dotted">Texto de prueba</p>
+	<p id="azul">Texto de prueba</p>
+	<p class="grande">Texto de prueba</p>
+	<p>Texto de prueba</p>
+
+	<p class="prueba grande">Texto con clase</p>
+	<p class="prueba">Texto con clase</p>
+	<div class="box">
+
+		<article>
+			<p class="prueba grande">Texto con clase</p>
+			<p class="rojo naranja" id="grisaceo">Texto con clase</p>
+			<p class="prueba">Texto con clase</p>
+		</article>
+		
+	</div>
+	<p>Hola</p>
+
+	<button id="cambio-color">Prueba</button>
+	<br><br>
+
+	<span class="azul">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sunt voluptas aliquam repellat incidunt vitae, distinctio libero? Similique quod aliquam enim nihil harum suscipit voluptate sunt ut, dignissimos quis. Laudantium?</span>
+
+	<div>
+		<h2>Modelo de caja</h2>
+		<p>Es la forma en la que se representa cada elemento dentro de un HTML como un rectá	ngulo, definiendo su diseño y estructura a través de capas</p>
+	</div>
+</body>
+</html>
