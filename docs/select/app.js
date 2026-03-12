@@ -8,7 +8,7 @@ btnShow.addEventListener("click", ()=>{
     let mnuUsers=document.getElementById("select");
     let opcs = "";
 
-    fetch('http://jsonplaceholder.typicode.com/users')
+    fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(usuarios => {
         usuarios.forEach(user => {
@@ -22,7 +22,7 @@ btnShow.addEventListener("click", ()=>{
 select.addEventListener("change", () => {
     const divPosts = document.getElementById("posts");
     let opcs = "";
-    fetch(`http://jsonplaceholder.typicode.com/posts?userId=${select.value}`)
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${select.value}`)
     .then(response => response.json())
     .then(posts => {
         posts.forEach(post => {
@@ -68,7 +68,7 @@ window.cargarComments = async function(postId) {
     </form>
     `;
 
-    fetch (`http://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+    fetch (`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
         .then(response => response.json())
         .then (comments => {
             comments.forEach(comment => {
@@ -91,7 +91,7 @@ window.publicarComentario = function(postId){
     const tittle = document.getElementById(`tittle${postId}`).value;
     const body = document.getElementById(`body${postId}`).value;
 
-    fetch('http://jsonplaceholder.typicode.com/posts', {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         body: JSON.stringify({
             title: tittle,
