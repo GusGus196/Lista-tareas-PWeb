@@ -68,7 +68,7 @@ window.cargarComments = async function(postId) {
     </form>
     `;
 
-    fetch (`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+    fetch (`http://jsonplaceholder.typicode.com/comments?postId=${postId}`)
         .then(response => response.json())
         .then (comments => {
             comments.forEach(comment => {
@@ -91,7 +91,7 @@ window.publicarComentario = function(postId){
     const tittle = document.getElementById(`tittle${postId}`).value;
     const body = document.getElementById(`body${postId}`).value;
 
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('http://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         body: JSON.stringify({
             title: tittle,
