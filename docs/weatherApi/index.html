@@ -11,11 +11,12 @@
 
     <H1>Clima</H1>
     <label for="selectCountry">Select a country</label>
-    <Select id="selectCountry" name="countries">
-        <option value="1">México</option>
-        <option value="2">Alemania</option>
-        <option value="3">Canada</option>
-        <option value="4">Rusia</option>
+    <Select id="selectCountry" name="countries" required>
+        <option value="0" disabled selected>Selecciona un Estado</option>
+        <option value="1">Guadalajara</option>
+        <option value="2">Morelia</option>
+        <option value="3">Ciudad de México</option>
+        <option value="4">Colima</option>
     </Select>
     <div id="countries"></div>
 
@@ -28,34 +29,62 @@
     let flag= "";
     let tittle = "";
 
-
     selectCountry.addEventListener("change", ()=>{
         if (selectCountry.value == 1){
-            flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1280px-Flag_of_Mexico.svg.png";
-            tittle = "México";
+            flag = "https://media.istockphoto.com/id/1160022189/es/foto/guadalajara-mexico.jpg?b=1&s=612x612&w=0&k=20&c=jqEs1LCpXx9aJOoLX8ENlT14qoK4T0Xl-4RH5C_wb6I=";
+            tittle = "Guadalajara";
         } else if (selectCountry.value == 2){
-           flag = "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg";
-            tittle = "Alemania";
+           flag = "https://media.istockphoto.com/id/508206756/es/foto/michoacano-morelia-m%C3%A9xico.jpg?s=612x612&w=0&k=20&c=i6eBYXOnZ4BrYpvelXWcvcKr9BuaEbotIgsZYWRwccM=";
+            tittle = "Morelia";
         } else if (selectCountry.value == 3){
-           flag = "https://upload.wikimedia.org/wikipedia/commons/b/b6/Flag_of_Canada.png";
-            tittle = "Canada";
+           flag = "https://media.traveler.es/photos/61376d14cb06ad0f20e1263c/master/w_1600%2Cc_limit/138975.jpg";
+            tittle = "Ciudad de México";
+        } else if (selectCountry.value == 4){
+           flag = "https://visitacolima.mx/images/2023/08/10/centrocolima.jpg";
+            tittle = "Colima";
         } else {
             divCountries.innerHTML="";
+            return;
         } 
+        
+        fetch("https://api.weatherstack.com/current?access_key=80438dbd89e934bc85ffb74d721806bd&query="+tittle)
+        .then(response => response.json())
+        .then(data => {
+            const temperture = data.current.temperature;
+            const icon = data.current.weather_icons[0]; 
+            const weather_descriptions = data.current.weather_descriptions[0];
+            const observation_time = data.current.observation_time;
+            const timezone = data.location.timezone_id;
+            const humidity = data.current.humidity;
+            const wind_speed = data.current.wind_speed;
 
-        if(selectCountry.value != 0){
+            console.log(data);
+
             divCountries.innerHTML=`
             <div class="card" style="width: 18rem;">
-                <img src="${flag}" class="card-img-top"  alt="...">
+                <img src="${flag}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Ver clima</a>
+                    <h5 class="card-title">Weather in ${tittle}</h5>
+                    <p class="card-text">
+                        Temperature: ${temperture}°C 
+                        <img src="${icon}" alt="Weather Icon">
+                    </p>
+                    <p class="card-text">Description: ${weather_descriptions}</p>
+                    <p class="card-text">Observation Time: ${observation_time}</p>
+                    <p class="card-text">Timezone: ${timezone}</p>
+                    <p class="card-text">Humidity: ${humidity}%</p>
+                    <p class="card-text">Wind Speed: ${wind_speed} km/h</p>
+                </div>
             </div>
-            </div>
-            `
-        }
+            `;
+        })
+        .catch(error => {
+            divCountries.innerHTML = "<p>Error al obtener el clima</p>";
+            console.error(error);
+        });
+
     })
+
  </script>
 </body>
 </html>
