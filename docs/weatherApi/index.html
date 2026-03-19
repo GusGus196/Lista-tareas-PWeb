@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <H1>Clima</H1>
+    <label for="selectCountry">Select a country</label>
+    <Select id="selectCountry" name="countries">
+        <option value="1">México</option>
+        <option value="2">Alemania</option>
+        <option value="3">Canada</option>
+        <option value="4">Rusia</option>
+    </Select>
+    <div id="countries"></div>
+
+
+<!-- JavaScript -->
+ <script type="module">
+    const selectCountry = document.getElementById("selectCountry");
+    const divCountries = document.getElementById("countries");
+
+    let flag= "";
+    let tittle = "";
+
+
+    selectCountry.addEventListener("change", ()=>{
+        if (selectCountry.value == 1){
+            flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1280px-Flag_of_Mexico.svg.png";
+            tittle = "México";
+        } else if (selectCountry.value == 2){
+           flag = "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg";
+            tittle = "Alemania";
+        } else if (selectCountry.value == 3){
+           flag = "https://upload.wikimedia.org/wikipedia/commons/b/b6/Flag_of_Canada.png";
+            tittle = "Canada";
+        } else {
+            divCountries.innerHTML="";
+        } 
+
+        if(selectCountry.value != 0){
+            divCountries.innerHTML=`
+            <div class="card" style="width: 18rem;">
+                <img src="${flag}" class="card-img-top"  alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                    <a href="#" class="btn btn-primary">Ver clima</a>
+            </div>
+            </div>
+            `
+        }
+    })
+ </script>
+</body>
+</html>
