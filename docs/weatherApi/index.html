@@ -47,7 +47,7 @@
             return;
         } 
         
-        fetch("https://api.weatherstack.com/current?access_key=80438dbd89e934bc85ffb74d721806bd&query="+tittle)
+        fetch("https://api.weatherstack.com/current?access_key=yourKey="+tittle)
         .then(response => response.json())
         .then(data => {
             const temperture = data.current.temperature;
