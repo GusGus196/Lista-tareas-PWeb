@@ -3,10 +3,10 @@ import { listCarros, carro, delCarro, agregarCarro} from "../controllers/constro
 
 const router = express.Router();
 
-router.get('/carros', listCarros);
-router.post('/carros', agregarCarro);
-router.get('/carros/:id', carro);
-router.delete('/carros/:id', delCarro);
+router.get('/vehiculos', listCarros);
+router.post('/vehiculos', agregarCarro);
+router.get('/vehiculos/:id', carro);
+router.delete('/vehiculos/:id', delCarro);
 
 
 export default router

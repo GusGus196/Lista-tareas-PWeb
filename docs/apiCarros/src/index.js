@@ -4,7 +4,7 @@ let list = "";
 btnListar.addEventListener("click", () =>{
     const divList = document.getElementById("divList");
     list = "";
-    fetch("http://localhost:3000/carros")
+    fetch("http://localhost:3000/vehiculos")
         .then(response => response.json())
         .then(carros => {
             carros.forEach(carro => {
@@ -30,7 +30,7 @@ btnAgregar.addEventListener("click", () =>{
     const placa = document.getElementById("placa").value;
     const marca = document.getElementById("marca").value;
     const modelo = document.getElementById("modelo").value;
-    fetch("http://localhost:3000/carros", {
+    fetch("http://localhost:3000/vehiculos", {
         method: 'post',
         headers: {
             "Content-Type": "application/json"
@@ -56,7 +56,7 @@ btnBuscar.addEventListener("click", ()=>{
     const placa = document.getElementById("placa").value;
     const divList = document.getElementById("divList");
     list = "";
-    fetch(`http://localhost:3000/carros/${placa}`)
+    fetch(`http://localhost:3000/vehiculos/${placa}`)
         .then(response => response.json())
         .then(carro =>{
             list += `
@@ -75,7 +75,7 @@ btnBuscar.addEventListener("click", ()=>{
 
 
 function delCarro(id){
-    fetch(`http://localhost:3000/carros/${id}`, {
+    fetch(`http://localhost:3000/vehiculos/${id}`, {
         method: 'delete'
     })
     .then(response => {
